@@ -18,11 +18,22 @@
 
 void accomplish_task(char *command, char *argv[])
 {
+	int status;
+
 	/* check if command exists and is executable */
 	if (compare_strings(command, "env"))
 	{
 		/* Handle the 'env' builtin command */
 		env_builtin();
+	}
+	else if (compare_strings(command, "exit"))
+	{
+		if (argv[1] != NULL)
+		{
+			status = atoi(argv[1]);
+			exit_with_status(status);
+		}
+		exit_builtin();
 	}
 	else
 	{

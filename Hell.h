@@ -59,6 +59,9 @@ char *_strcpy(char *dest, const char *src);
 void execute_command_child(char *command, char *argv[]);
 int is_executable(char *command, char *argv[]);
 void parse_command(char *command, char *argv[]);
+void exit_with_status(int status);
+void env_builtin(void);
+void exit_builtin(void);
 
 
 

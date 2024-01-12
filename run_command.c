@@ -70,9 +70,10 @@ char *_strconcat(const char *prefix, const char *suffix)
 	int suffix_len = _strlen(suffix);
 	char *result = malloc(prefix_len + suffix_len + 1);
 
-	if (result == NULL)
+	if (!result)
 	{
-		return (NULL);
+		perror("malloc");
+		exit(EXIT_FAILURE);
 	}
 
 	_strcpy(result, prefix);  /*  Copy prefix to result */

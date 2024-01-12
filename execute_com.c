@@ -10,11 +10,7 @@
 
 void parse_command(char *command, char *argv[])
 {
-	int i = 0;
-
-	argv[i++] = strtok(command, " ");
-	while ((argv[i++] = strtok(NULL, " ")) != NULL)
-	argv[i - 1] = NULL;
+	tokenize_arguments(command, argv);
 }
 
 
@@ -55,6 +51,7 @@ void execute_command_child(char *command, char *argv[])
 	if (execve(command, argv, NULL) == -1)
 	{
 		perror("execve");
+		fprintf(stderr, "Failed to execute command: %s\n", command);
 		exit(EXIT_FAILURE);
 	}
 }
