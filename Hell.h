@@ -56,7 +56,9 @@ char *_strchr(const char *str, int c);
 int _strlen(const char *str);
 char *_strconcat(const char *prefix, const char *suffix);
 char *_strcpy(char *dest, const char *src);
-
+void execute_command_child(char *command, char *argv[]);
+int is_executable(char *command, char *argv[]);
+void parse_command(char *command, char *argv[]);
 
 
 

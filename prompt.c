@@ -9,5 +9,5 @@
  */
 void display_prompt(void)
 {
-	sayne_print("IDAN$ ");
+	sayne_print("$");
 }
