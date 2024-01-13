@@ -14,14 +14,16 @@
 
 int main(void)
 {
-	char *argv[MAX_ARGUMENTS];
 	char instruction[MAX_COMMAND_LENGTH];
 
 	while (1)
 	{
 		display_prompt();
-		interpret_command(instruction, sizeof(instruction));
-		accomplish_task(instruction, argv);
+		if (interpret_command(instruction, MAX_COMMAND_LENGTH) != 0)
+		{
+			exit(EXIT_FAILURE);
+		}
+		execute_command(instruction);
 	}
 	return (0);
 }

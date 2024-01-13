@@ -19,10 +19,11 @@
  * Parameters:
  * - instruction: The buffer to store the entered command.
  * - size: The size of the buffer.
+ *   return: 0 if successful otherwise return 1.
  */
 
 
-void interpret_command(char *instruction, size_t size)
+int interpret_command(char *instruction, size_t size)
 {
 	if (fgets(instruction, size, stdin) == NULL)
 	{
@@ -31,6 +32,9 @@ void interpret_command(char *instruction, size_t size)
 			sayne_print("\n");
 			exit(EXIT_SUCCESS);
 		}
+		write(STDERR_FILENO, "Error reading command.\n", 44);
+		exit(EXIT_FAILURE);
 	}
 	instruction[strcspn(instruction, "\n")] = '\0';
+	return (0);
 }

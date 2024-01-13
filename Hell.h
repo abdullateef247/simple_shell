@@ -38,30 +38,17 @@ extern char **environ;
  * Functions
  */
 void sayne_print(const char *format, ...);
-void interpret_command(char *instruction, size_t size);
+int interpret_command(char *instruction, size_t size);
 void display_prompt(void);
-void execute_command(char *command, char *argv[]);
-void accomplish_task(char *command, char *argv[]);
 int compare_strings(const char *str1, const char *str2);
-char *tokenize_arguments(const char *task, char *args[]);
-void process_arguments(int argc, char *argv[]);
 int main(void);
 void env_builtin(void);
-void set_last_element_to_null(char *args[], int arg_index);
-char *handle_quotes_and_escapes(char *token, bool *in_quotes);
-char *custom_strtok(char *str, const char *delimiters);
-char *custom_getline(void);
-char *read_input(size_t *buffer_size, size_t *buffer_pos);
-char *_strchr(const char *str, int c);
-int _strlen(const char *str);
-char *_strconcat(const char *prefix, const char *suffix);
-char *_strcpy(char *dest, const char *src);
-void execute_command_child(char *command, char *argv[]);
-int is_executable(char *command, char *argv[]);
-void parse_command(char *command, char *argv[]);
 void exit_with_status(int status);
 void env_builtin(void);
 void exit_builtin(void);
+void execute_command(const char *command);
+void handle_parent_process(pid_t child_pid);
+void handle_child_process(const char *command);
 
 
 
